@@ -1,40 +1,129 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>موقع دراستك</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>موقع دراستو</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 0;
+    }
+    header h1 {
+      margin: 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .hidden {
+      display: none;
+    }
+    .materials, .lessons {
+      margin-top: 20px;
+    }
+    .material-button, .lesson-button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .material-button:hover, .lesson-button:hover {
+      background-color: #218838;
+    }
+    footer {
+      margin-top: 30px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>مرحبًا، لقد دخلت إلى موقع دراستك</h1>
-    <p>ماذا يمكن أن أساعدك؟</p>
-    <button id="addButton">إضافة دروس</button>
-  </div>
+  <header>
+    <h1>مرحبًا بك في موقع دراستو</h1>
+  </header>
 
-  <!-- نافذة اختيار المواد -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>اختر المادة الدراسية</h2>
-      <ul>
-        <li><button class="subject-btn" data-subject="math">الرياضيات</button></li>
-        <li><button class="subject-btn" data-subject="physics">الفيزياء</button></li>
-        <li><button class="subject-btn" data-subject="chemistry">الكيمياء</button></li>
-      </ul>
+  <main>
+    <p>اكتشف الدروس والمواد التي تساعدك على التعلم بطريقة أفضل.</p>
+    <button id="addButton">إضافة</button>
+
+    <div id="materialsSection" class="hidden materials">
+      <h2>اختر المادة الأساسية:</h2>
+      <button class="material-button" onclick="showLessons('math')">الرياضيات</button>
+      <button class="material-button" onclick="showLessons('physics')">الفيزياء</button>
+      <button class="material-button" onclick="showLessons('chemistry')">الكيمياء</button>
     </div>
-  </div>
 
-  <!-- نافذة الملفات -->
-  <div class="modal" id="fileModal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 id="fileModalTitle"></h2>
-      <ul id="fileList"></ul>
+    <div id="lessonsSection" class="hidden lessons">
+      <h2>دروس <span id="selectedMaterial"></span>:</h2>
+      <div id="lessonsList"></div>
+      <button onclick="goBack()">عودة</button>
     </div>
-  </div>
+  </main>
 
-  <script src="script.js"></script>
+  <footer>
+    <p>&copy; 2024 موقع دراستو. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <script>
+    const addButton = document.getElementById('addButton');
+    const materialsSection = document.getElementById('materialsSection');
+    const lessonsSection = document.getElementById('lessonsSection');
+    const lessonsList = document.getElementById('lessonsList');
+    const selectedMaterial = document.getElementById('selectedMaterial');
+
+    const lessonsData = {
+      math: ['الجبر', 'الهندسة', 'الإحصاء'],
+      physics: ['الحركة', 'القوى', 'الكهرباء'],
+      chemistry: ['الذرات', 'التفاعلات', 'المعادلات']
+    };
+
+    addButton.addEventListener('click', () => {
+      materialsSection.classList.remove('hidden');
+      addButton.classList.add('hidden');
+    });
+
+    function showLessons(material) {
+      selectedMaterial.textContent = material === 'math' ? 'الرياضيات' : material === 'physics' ? 'الفيزياء' : 'الكيمياء';
+      lessonsList.innerHTML = '';
+      lessonsData[material].forEach(lesson => {
+        const button = document.createElement('button');
+        button.textContent = lesson;
+        button.classList.add('lesson-button');
+        lessonsList.appendChild(button);
+      });
+      materialsSection.classList.add('hidden');
+      lessonsSection.classList.remove('hidden');
+    }
+
+    function goBack() {
+      lessonsSection.classList.add('hidden');
+      materialsSection.classList.remove('hidden');
+    }
+  </script>
 </body>
-</html> 
+</html>
