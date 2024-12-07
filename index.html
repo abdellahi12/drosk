@@ -11,73 +11,92 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
-            transition: background-color 0.5s ease;
         }
-
         h1 {
             color: #4CAF50;
-            font-size: 2.5rem;
+            font-size: 40px;
+            margin-top: 50px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
-
-        button {
-            padding: 12px 24px;
+        p {
+            font-size: 20px;
+            color: #555;
+        }
+        .add-button {
+            padding: 15px 30px;
             font-size: 20px;
             cursor: pointer;
             border: none;
             background-color: #008CBA;
             color: white;
-            margin-top: 20px;
+            margin-top: 30px;
             border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
-
-        button:hover {
+        .add-button:hover {
+            transform: translateY(-10px); /* تأثير حركة عند التمرير */
             background-color: #005f73;
-            transform: scale(1.1);
         }
-
         .sections {
             display: none;
-            margin-top: 20px;
+            margin-top: 30px;
+            text-align: center;
         }
-
+        .sections button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #f8b400;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .sections button:hover {
+            background-color: #e68900;
+        }
         .titles {
             display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            text-align: left;
+            padding-left: 20px;
         }
-
         ul {
             list-style-type: none;
             padding: 0;
         }
-
         li {
-            font-size: 18px;
-            margin: 12px 0;
+            font-size: 22px;
+            margin: 15px 0;
             cursor: pointer;
             background-color: #e7e7e7;
-            padding: 12px;
-            border-radius: 6px;
-            transition: background-color 0.3s ease;
+            padding: 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
-
         li:hover {
             background-color: #d4d4d4;
+            transform: translateX(10px);
         }
-
         #content-detail {
             display: none;
-            margin-top: 20px;
-            padding: 20px;
+            margin-top: 30px;
+            padding: 30px;
             background-color: #e7f7e7;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
+        #content-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+        #content-description {
+            font-size: 20px;
+            color: #666;
+            line-height: 1.6;
+        }
         .footer {
             background-color: #333;
             color: white;
@@ -85,8 +104,8 @@
             position: fixed;
             width: 100%;
             bottom: 0;
+            font-size: 16px;
         }
-
     </style>
 </head>
 <body>
@@ -104,30 +123,30 @@
     <div class="titles" id="math-titles">
         <h2>عناوين الرياضيات</h2>
         <ul>
-            <li onclick="showContent('رياضيات', 'الجبر')">الجبر</li>
-            <li onclick="showContent('رياضيات', 'الهندسة')">الهندسة</li>
-            <li onclick="showContent('رياضيات', 'حساب التفاضل')">حساب التفاضل</li>
-            <li onclick="showContent('رياضيات', 'النظام العددي')">النظام العددي</li>
+            <li onclick="showMathContent('الجبر')">الجبر</li>
+            <li onclick="showMathContent('الهندسة')">الهندسة</li>
+            <li onclick="showMathContent('حساب التفاضل')">حساب التفاضل</li>
+            <li onclick="showMathContent('النظام العددي')">النظام العددي</li>
         </ul>
     </div>
 
     <div class="titles" id="physics-titles">
         <h2>عناوين الفيزياء</h2>
         <ul>
-            <li onclick="showContent('فيزياء', 'الميكانيكا')">الميكانيكا</li>
-            <li onclick="showContent('فيزياء', 'الديناميكا الحرارية')">الديناميكا الحرارية</li>
-            <li onclick="showContent('فيزياء', 'الكهرومغناطيسية')">الكهرومغناطيسية</li>
-            <li onclick="showContent('فيزياء', 'البصريات')">البصريات</li>
+            <li onclick="showPhysicsContent('الميكانيكا')">الميكانيكا</li>
+            <li onclick="showPhysicsContent('الديناميكا الحرارية')">الديناميكا الحرارية</li>
+            <li onclick="showPhysicsContent('الكهرومغناطيسية')">الكهرومغناطيسية</li>
+            <li onclick="showPhysicsContent('البصريات')">البصريات</li>
         </ul>
     </div>
 
     <div class="titles" id="chemistry-titles">
         <h2>عناوين الكيمياء</h2>
         <ul>
-            <li onclick="showContent('كيمياء', 'البنية الذرية')">البنية الذرية</li>
-            <li onclick="showContent('كيمياء', 'التفاعلات الكيميائية')">التفاعلات الكيميائية</li>
-            <li onclick="showContent('كيمياء', 'الكيمياء العضوية')">الكيمياء العضوية</li>
-            <li onclick="showContent('كيمياء', 'الحرارة الكيميائية')">الحرارة الكيميائية</li>
+            <li onclick="showChemistryContent('البنية الذرية')">البنية الذرية</li>
+            <li onclick="showChemistryContent('التفاعلات الكيميائية')">التفاعلات الكيميائية</li>
+            <li onclick="showChemistryContent('الكيمياء العضوية')">الكيمياء العضوية</li>
+            <li onclick="showChemistryContent('الحرارة الكيميائية')">الحرارة الكيميائية</li>
         </ul>
     </div>
 
@@ -144,32 +163,52 @@
         // عند الضغط على "اضغط هنا" لإظهار الأقسام
         function showSections() {
             var sections = document.getElementById('sections');
-            sections.style.display = sections.style.display === 'block' ? 'none' : 'block';
+            if (sections.style.display === 'block') {
+                sections.style.display = 'none'; // إخفاء الأقسام إذا كانت مرئية
+            } else {
+                sections.style.display = 'block'; // عرض الأقسام إذا كانت مخفية
+            }
         }
 
-        // عرض العناوين حسب المادة
+        // عندما تختار قسم الرياضيات
         function showMathTitles() {
             document.getElementById('math-titles').style.display = 'block';
             document.getElementById('physics-titles').style.display = 'none';
             document.getElementById('chemistry-titles').style.display = 'none';
         }
 
+        // عندما تختار قسم الفيزياء
         function showPhysicsTitles() {
             document.getElementById('math-titles').style.display = 'none';
             document.getElementById('physics-titles').style.display = 'block';
             document.getElementById('chemistry-titles').style.display = 'none';
         }
 
+        // عندما تختار قسم الكيمياء
         function showChemistryTitles() {
             document.getElementById('math-titles').style.display = 'none';
             document.getElementById('physics-titles').style.display = 'none';
             document.getElementById('chemistry-titles').style.display = 'block';
         }
 
-        // عرض محتوى المادة
-        function showContent(subject, title) {
+        // عرض محتوى الرياضيات
+        function showMathContent(title) {
             document.getElementById('content-title').innerText = title;
-            document.getElementById('content-description').innerText =' شرح درس ${title} في مادة ${subject}: هذا الدرس يتناول أساسيات المادةَ';
+            document.getElementById('content-description').innerText =' شرح درس ${title}: هذا الدرس يتناول أساسيات مادة ${title}.;'
+            document.getElementById('content-detail').style.display = 'block';
+        }
+
+        // عرض محتوى الفيزياء
+        function showPhysicsContent(title) {
+            document.getElementById('content-title').innerText = title;
+            document.getElementById('content-description').innerText =' شرح درس ${title}: هذا الدرس يتناول أساسيات مادة ${title}.;'
+            document.getElementById('content-detail').style.display = 'block';
+        }
+
+        // عرض محتوى الكيمياء
+        function showChemistryContent(title) {
+            document.getElementById('content-title').innerText = title;
+            document.getElementById('content-description').innerText =' شرح درس ${title}: هذا الدرس يتناول أساسيات مادة ${title}.'
             document.getElementById('content-detail').style.display = 'block';
         }
     </script>
