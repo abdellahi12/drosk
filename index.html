@@ -1,129 +1,177 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>موقع دراستو</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-    }
-    header {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 0;
-    }
-    header h1 {
-      margin: 0;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 18px;
-      color: white;
-      background-color: #007bff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .hidden {
-      display: none;
-    }
-    .materials, .lessons {
-      margin-top: 20px;
-    }
-    .material-button, .lesson-button {
-      padding: 10px;
-      margin: 5px;
-      font-size: 16px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .material-button:hover, .lesson-button:hover {
-      background-color: #218838;
-    }
-    footer {
-      margin-top: 30px;
-      background-color: #007bff;
-      color: white;
-      padding: 10px 0;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع دراستو</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            transition: background-color 0.5s ease;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 2.5rem;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            background-color: #008CBA;
+            color: white;
+            margin-top: 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005f73;
+            transform: scale(1.1);
+        }
+
+        .sections {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .titles {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 18px;
+            margin: 12px 0;
+            cursor: pointer;
+            background-color: #e7e7e7;
+            padding: 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #d4d4d4;
+        }
+
+        #content-detail {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e7f7e7;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+    </style>
 </head>
 <body>
-  <header>
-    <h1>مرحبًا بك في موقع دراستو</h1>
-  </header>
+    <h1>مرحبا بكم في موقع دراستو</h1>
+    <p>ما الذي يمكن أن يساعدك؟</p>
 
-  <main>
-    <p>اكتشف الدروس والمواد التي تساعدك على التعلم بطريقة أفضل.</p>
-    <button id="addButton">إضافة</button>
+    <button class="add-button" onclick="showSections()">اضغط هنا</button>
 
-    <div id="materialsSection" class="hidden materials">
-      <h2>اختر المادة الأساسية:</h2>
-      <button class="material-button" onclick="showLessons('math')">الرياضيات</button>
-      <button class="material-button" onclick="showLessons('physics')">الفيزياء</button>
-      <button class="material-button" onclick="showLessons('chemistry')">الكيمياء</button>
+    <div class="sections" id="sections">
+        <button onclick="showMathTitles()">رياضيات</button>
+        <button onclick="showPhysicsTitles()">فيزياء</button>
+        <button onclick="showChemistryTitles()">كيمياء</button>
     </div>
 
-    <div id="lessonsSection" class="hidden lessons">
-      <h2>دروس <span id="selectedMaterial"></span>:</h2>
-      <div id="lessonsList"></div>
-      <button onclick="goBack()">عودة</button>
+    <div class="titles" id="math-titles">
+        <h2>عناوين الرياضيات</h2>
+        <ul>
+            <li onclick="showContent('رياضيات', 'الجبر')">الجبر</li>
+            <li onclick="showContent('رياضيات', 'الهندسة')">الهندسة</li>
+            <li onclick="showContent('رياضيات', 'حساب التفاضل')">حساب التفاضل</li>
+            <li onclick="showContent('رياضيات', 'النظام العددي')">النظام العددي</li>
+        </ul>
     </div>
-  </main>
 
-  <footer>
-    <p>&copy; 2024 موقع دراستو. جميع الحقوق محفوظة.</p>
-  </footer>
+    <div class="titles" id="physics-titles">
+        <h2>عناوين الفيزياء</h2>
+        <ul>
+            <li onclick="showContent('فيزياء', 'الميكانيكا')">الميكانيكا</li>
+            <li onclick="showContent('فيزياء', 'الديناميكا الحرارية')">الديناميكا الحرارية</li>
+            <li onclick="showContent('فيزياء', 'الكهرومغناطيسية')">الكهرومغناطيسية</li>
+            <li onclick="showContent('فيزياء', 'البصريات')">البصريات</li>
+        </ul>
+    </div>
 
-  <script>
-    const addButton = document.getElementById('addButton');
-    const materialsSection = document.getElementById('materialsSection');
-    const lessonsSection = document.getElementById('lessonsSection');
-    const lessonsList = document.getElementById('lessonsList');
-    const selectedMaterial = document.getElementById('selectedMaterial');
+    <div class="titles" id="chemistry-titles">
+        <h2>عناوين الكيمياء</h2>
+        <ul>
+            <li onclick="showContent('كيمياء', 'البنية الذرية')">البنية الذرية</li>
+            <li onclick="showContent('كيمياء', 'التفاعلات الكيميائية')">التفاعلات الكيميائية</li>
+            <li onclick="showContent('كيمياء', 'الكيمياء العضوية')">الكيمياء العضوية</li>
+            <li onclick="showContent('كيمياء', 'الحرارة الكيميائية')">الحرارة الكيميائية</li>
+        </ul>
+    </div>
 
-    const lessonsData = {
-      math: ['الجبر', 'الهندسة', 'الإحصاء'],
-      physics: ['الحركة', 'القوى', 'الكهرباء'],
-      chemistry: ['الذرات', 'التفاعلات', 'المعادلات']
-    };
+    <div class="content-detail" id="content-detail">
+        <h3 id="content-title"></h3>
+        <p id="content-description"></p>
+    </div>
 
-    addButton.addEventListener('click', () => {
-      materialsSection.classList.remove('hidden');
-      addButton.classList.add('hidden');
-    });
+    <div class="footer">
+        <p>© 2024 جميع الحقوق محفوظة</p>
+    </div>
 
-    function showLessons(material) {
-      selectedMaterial.textContent = material === 'math' ? 'الرياضيات' : material === 'physics' ? 'الفيزياء' : 'الكيمياء';
-      lessonsList.innerHTML = '';
-      lessonsData[material].forEach(lesson => {
-        const button = document.createElement('button');
-        button.textContent = lesson;
-        button.classList.add('lesson-button');
-        lessonsList.appendChild(button);
-      });
-      materialsSection.classList.add('hidden');
-      lessonsSection.classList.remove('hidden');
-    }
+    <script>
+        // عند الضغط على "اضغط هنا" لإظهار الأقسام
+        function showSections() {
+            var sections = document.getElementById('sections');
+            sections.style.display = sections.style.display === 'block' ? 'none' : 'block';
+        }
 
-    function goBack() {
-      lessonsSection.classList.add('hidden');
-      materialsSection.classList.remove('hidden');
-    }
-  </script>
+        // عرض العناوين حسب المادة
+        function showMathTitles() {
+            document.getElementById('math-titles').style.display = 'block';
+            document.getElementById('physics-titles').style.display = 'none';
+            document.getElementById('chemistry-titles').style.display = 'none';
+        }
+
+        function showPhysicsTitles() {
+            document.getElementById('math-titles').style.display = 'none';
+            document.getElementById('physics-titles').style.display = 'block';
+            document.getElementById('chemistry-titles').style.display = 'none';
+        }
+
+        function showChemistryTitles() {
+            document.getElementById('math-titles').style.display = 'none';
+            document.getElementById('physics-titles').style.display = 'none';
+            document.getElementById('chemistry-titles').style.display = 'block';
+        }
+
+        // عرض محتوى المادة
+        function showContent(subject, title) {
+            document.getElementById('content-title').innerText = title;
+            document.getElementById('content-description').innerText =' شرح درس ${title} في مادة ${subject}: هذا الدرس يتناول أساسيات المادةَ';
+            document.getElementById('content-detail').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
