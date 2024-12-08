@@ -34,7 +34,7 @@
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
         .add-button:hover {
-            transform: translateY(-10px); /* تأثير حركة عند التمرير */
+            transform: translateY(-10px);
             background-color: #005f73;
         }
         .sections {
@@ -114,30 +114,30 @@
     <div class="titles" id="math-titles">
         <h2>عناوين الرياضيات</h2>
         <ul>
-            <li onclick="showMathContent('Algèbre')">الجبر</li>
-            <li onclick="showMathContent('Suites')">سويت</li>
-            <li onclick="showMathContent('Fonctions')">دالة</li>
-            <li onclick="showMathContent('Nombres')">النظام العددي</li>
+            <li onclick="showMathContent('Suites')">Suites</li>
+            <li onclick="showMathContent('Matrices')">Matrices</li>
+            <li onclick="showMathContent('Fonctions')">Fonctions</li>
+            <li onclick="showMathContent('Nombres')">Nombres</li>
         </ul>
     </div>
 
     <div class="titles" id="physics-titles">
         <h2>عناوين الفيزياء</h2>
         <ul>
-            <li onclick="showPhysicsContent('Mécanique')">الميكانيكا</li>
-            <li onclick="showPhysicsContent('Thermodynamique')">الديناميكا الحرارية</li>
-            <li onclick="showPhysicsContent('Électromagnétisme')">الكهرومغناطيسية</li>
-            <li onclick="showPhysicsContent('Optique')">البصريات</li>
+            <li onclick="showPhysicsContent('Mécanique')">Mécanique</li>
+            <li onclick="showPhysicsContent('Thermodynamique')">Thermodynamique</li>
+            <li onclick="showPhysicsContent('Électromagnétisme')">Électromagnétisme</li>
+            <li onclick="showPhysicsContent('Optique')">Optique</li>
         </ul>
     </div>
 
     <div class="titles" id="chemistry-titles">
         <h2>عناوين الكيمياء</h2>
         <ul>
-            <li onclick="showChemistryContent('Structure atomique')">البنية الذرية</li>
-            <li onclick="showChemistryContent('Réactions chimiques')">التفاعلات الكيميائية</li>
-            <li onclick="showChemistryContent('Chimie organique')">الكيمياء العضوية</li>
-            <li onclick="showChemistryContent('Chimie thermique')">الحرارة الكيميائية</li>
+            <li onclick="showChemistryContent('Structure atomique')">Structure atomique</li>
+            <li onclick="showChemistryContent('Réactions chimiques')">Réactions chimiques</li>
+            <li onclick="showChemistryContent('Chimie organique')">Chimie organique</li>
+            <li onclick="showChemistryContent('Thermochimie')">Thermochimie</li>
         </ul>
     </div>
 
@@ -147,55 +147,44 @@
     </div>
 
     <script>
-        // عند الضغط على "اضغط هنا" لإظهار الأقسام
         function showSections() {
             var sections = document.getElementById('sections');
-            if (sections.style.display === 'block') {
-                sections.style.display = 'none'; // إخفاء الأقسام إذا كانت مرئية
-            } else {
-                sections.style.display = 'block'; // عرض الأقسام إذا كانت مخفية
-            }
+            sections.style.display = sections.style.display === 'block' ? 'none' : 'block';
         }
 
-        // عندما تختار قسم الرياضيات
         function showMathTitles() {
             document.getElementById('math-titles').style.display = 'block';
             document.getElementById('physics-titles').style.display = 'none';
             document.getElementById('chemistry-titles').style.display = 'none';
         }
 
-        // عندما تختار قسم الفيزياء
         function showPhysicsTitles() {
             document.getElementById('math-titles').style.display = 'none';
             document.getElementById('physics-titles').style.display = 'block';
             document.getElementById('chemistry-titles').style.display = 'none';
         }
 
-        // عندما تختار قسم الكيمياء
         function showChemistryTitles() {
             document.getElementById('math-titles').style.display = 'none';
             document.getElementById('physics-titles').style.display = 'none';
             document.getElementById('chemistry-titles').style.display = 'block';
         }
 
-        // عرض محتوى الرياضيات
         function showMathContent(title) {
             document.getElementById('content-title').innerText = title;
-            document.getElementById('content-description').innerText = 'سنعالج هاطا السريعاً'
+            document.getElementById('content-description').innerText = 'سنعالج هتذا سريعاً'
             document.getElementById('content-detail').style.display = 'block';
         }
 
-        // عرض محتوى الفيزياء
         function showPhysicsContent(title) {
             document.getElementById('content-title').innerText = title;
-            document.getElementById('content-description').innerText = 'سنعالج هاطا السريعاً'
+            document.getElementById('content-description').innerText = 'سنعالج هتذا سريعاً'
             document.getElementById('content-detail').style.display = 'block';
         }
 
-        // عرض محتوى الكيمياء
         function showChemistryContent(title) {
             document.getElementById('content-title').innerText = title;
-            document.getElementById('content-description').innerText = 'سنعالج هاطا السريعاً' 
+            document.getElementById('content-description').innerText = 'سنعالج هتذا سريعاً'
             document.getElementById('content-detail').style.display = 'block';
         }
     </script>
