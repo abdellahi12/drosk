@@ -118,6 +118,7 @@
             <li onclick="showMathContent('Matrices')">Matrices</li>
             <li onclick="showMathContent('Fonctions')">Fonctions</li>
             <li onclick="showMathContent('Nombres')">Nombres</li>
+            <li onclick="showMathContent('Géométrie dans l\'espace')">Géométrie dans l'espace</li>
         </ul>
     </div>
 
@@ -171,22 +172,58 @@
         }
 
         function showMathContent(title) {
-            document.getElementById('content-title').innerText = title;
-            document.getElementById('content-description').innerText = 'سنعالج هتذا سريعاً'
+            if (title === 'Suites') {
+                document.getElementById('content-title').innerText = 'Suites';
+                document.getElementById('content-description').innerText = 'La suite est une succession ordonnée de nombres suivant une règle déterminée. Nous allons aborder les suites arithmétiques et géométriques'
+            } else if (title === 'Matrices') {
+                document.getElementById('content-title').innerText = 'Matrices';
+                document.getElementById('content-description').innerText = 'Les matrices sont des tableaux rectangulaires de nombres. Elles sont très utilisées en algèbre pour résoudre des systèmes d équations linéaires'
+            } else if (title === 'Fonctions') {
+                document.getElementById('content-title').innerText = 'Fonctions';
+                document.getElementById('content-description').innerText = 'Une fonction est une relation entre un ensemble de départ et un ensemble d arrivée. Nous explorerons les fonctions linéaires et affines'
+            } else if (title === 'Nombres') {
+                document.getElementById('content-title').innerText = 'Nombres';
+                document.getElementById('content-description').innerText = 'Les nombres sont des entités fondamentales des mathématiques. Nous verrons les types de nombres, tels que les entiers, les réels, et les complexes'
+            } else if (title === 'Géométrie dans l\'espace') {
+                document.getElementById('content-title').innerText = 'Géométrie dans l\'espace';
+                document.getElementById('content-description').innerText = 'La géométrie dans l espace concerne l étude des figures géométriques en trois dimensions.Nous aborderons les plans, les droites et les vecteurs'
+            }
             document.getElementById('content-detail').style.display = 'block';
         }
 
         function showPhysicsContent(title) {
-            document.getElementById('content-title').innerText = title;
-            document.getElementById('content-description').innerText = 'سنعالج هتذا سريعاً'
+            if (title === 'Mécanique') {
+                document.getElementById('content-title').innerText = 'Mécanique';
+                document.getElementById('content-description').innerText = 'La mécanique est la branche de la physique qui étudie les mouvements des corps. Elle se divise en dynamique, statique et cinématique'
+            } else if (title === 'Thermodynamique') {
+                document.getElementById('content-title').innerText = 'Thermodynamique';
+                document.getElementById('content-description').innerText = 'La thermodynamique traite des lois qui gouvernent les échanges d énergie sous forme de chaleur et de travail. Nous explorerons la première et la deuxième loi de la thermodynamique'
+            } else if (title === 'Électromagnétisme') {
+                document.getElementById('content-title').innerText = 'Électromagnétisme';
+                document.getElementById('content-description').innerText = 'L électromagnétisme est la branche de la physique qui étudie les phénomènes liés aux champs électriques et magnétiques. Nous aborderons les lois de Maxwell et les applications pratiques'
+            } else if (title === 'Optique') {
+                document.getElementById('content-title').innerText = 'Optique';
+                document.getElementById('content-description').innerText = 'L optique est la branche de la physique qui traite de la lumière et de ses propriétés. Nous étudierons la réflexion, la réfraction et les phénomènes de diffraction'
+            }
             document.getElementById('content-detail').style.display = 'block';
         }
 
         function showChemistryContent(title) {
-            document.getElementById('content-title').innerText = title;
-            document.getElementById('content-description').innerText = 'سنعالج هتذا سريعاً'
+            if (title === 'Structure atomique') {
+                document.getElementById('content-title').innerText = 'Structure atomique';
+                document.getElementById('content-description').innerText = 'La structure atomique traite de la constitution des atomes. Nous allons explorer les protons, neutrons, électrons et les couches électroniques'
+            } else if (title === 'Réactions chimiques') {
+                document.getElementById('content-title').innerText = 'Réactions chimiques';
+                document.getElementById('content-description').innerText = 'Les réactions chimiques sont des transformations où des substances réagissent pour former de nouvelles substances. Nous allons examiner différents types de réactions'
+            } else if (title === 'Chimie organique') {
+                document.getElementById('content-title').innerText = 'Chimie organique';
+                document.getElementById('content-description').innerText = 'La chimie organique étudie les composés du carbone. Nous aborderons les alcanes, alcènes, et les réactions organiques importantes'
+            } else if (title === 'Thermochimie') {
+                document.getElementById('content-title').innerText = 'Thermochimie';
+                document.getElementById('content-description').innerText = 'La thermochimie est la branche de la chimie qui étudie les échanges thermiques lors des réactions chimiques. Nous explorerons les enthalpies de réaction et la loi de Hess'
+            }
             document.getElementById('content-detail').style.display = 'block';
         }
     </script>
 </body>
-</html>
+</html> 
